@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { GlobalStyles } from './styles';
-import Home from './pages/Home';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <GlobalStyles />
-      <Home />
-    </HelmetProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
