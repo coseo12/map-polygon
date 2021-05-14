@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { getCities, getCityNames, getCountries, getCountryNames } from '../api';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const cityNames = getCityNames();
+  const cities = getCities(cityNames[0]);
+  const countryNames = getCountryNames(cities);
+  const countries = getCountries(cities, countryNames[0]);
 
-  return <div className="App">{count}</div>;
+  console.log(countries);
+  return <div>Home</div>;
 }
 
 export default App;
