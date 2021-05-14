@@ -1,5 +1,5 @@
 import { Geolocations, Geolocation } from '../types';
-import getoLocationJson from './country.json';
+import getoLocationJson from '../data/country.json';
 
 const getMaps = (): Geolocation[] => {
   const { maps } = getoLocationJson as Geolocations;
