@@ -17,8 +17,8 @@ const SearchInput = styled.input`
 const SearchIcon = styled.div`
   position: absolute;
   right: 5px;
-  top: 4px;
-  font-size: 20px;
+  top: 6px;
+  font-size: 18px;
   cursor: pointer;
 `;
 

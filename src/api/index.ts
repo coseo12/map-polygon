@@ -6,6 +6,12 @@ const getMaps = (): Geolocation[] => {
   return maps;
 };
 
+export const getMapData = (): Geolocation[][] => {
+  const cityNames = getCityNames();
+  const cities = cityNames.map(name => getCities(name));
+  return cities;
+};
+
 export const getCityNames = (): string[] => {
   const maps = getMaps();
   const cities = maps.map(map => map.city);

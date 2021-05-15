@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getCities, getCityNames, getCountries, getCountryNames } from '../api';
 import GoogleMap from '../components/GoogleMap';
 import Header from '../components/Header';
+import Loader from '../components/Loader';
+import Modal from '../components/Modal';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -11,18 +12,16 @@ const HomeContainer = styled.div`
   header {
     position: fixed;
     background-color: transparent;
+    z-index: 100;
   }
 `;
 
 const Home = () => {
-  const cityNames = getCityNames();
-  const cities = getCities(cityNames[0]);
-  const countryNames = getCountryNames(cities);
-  const countries = getCountries(cities, countryNames[0]);
-
-  console.log(countries);
   return (
     <HomeContainer>
+      <Modal>
+        <Loader />
+      </Modal>
       <Header />
       <GoogleMap />
     </HomeContainer>

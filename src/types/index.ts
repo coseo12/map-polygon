@@ -22,3 +22,28 @@ export type Geolocation = {
 export type Geolocations = {
   maps: Geolocation[];
 };
+
+export type Coords = {
+  lat: number;
+  lng: number;
+};
+
+export type GoogleMapProps = {
+  locations?: Geolocation[];
+  removeLocation(cityName: string, countryName: string): void;
+  addLocation(geolocation: Geolocation): void;
+  cities?: Geolocation[][];
+};
+
+type address_components = {
+  long_name: string;
+  short_name: string;
+  types: string[];
+};
+export type Geocoder = {
+  address_components: address_components[];
+  formatted_address: string;
+  geometry: any;
+  place_id: string;
+  types: string[];
+};
