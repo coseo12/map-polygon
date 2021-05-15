@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSetup } from '../contexts/LocationContext';
 import SearchBtn from './SearchBtn';
 import SearchBox from './SearchInput';
 
@@ -10,10 +11,12 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = () => {
+  const { setSetup } = useSetup();
+
   return (
     <HeaderContainer>
       <SearchBox />
-      <SearchBtn>지역 설정</SearchBtn>
+      <SearchBtn onClick={() => setSetup(true)}>지역 설정</SearchBtn>
     </HeaderContainer>
   );
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SearchBtn = styled.button`
+const SetupBtn = styled.button`
   margin-left: 10px;
   padding: 5px 18px;
   background-color: ${props => props.theme.bgColor};
@@ -10,8 +10,6 @@ const SearchBtn = styled.button`
   border: 1px solid ${props => props.theme.borderColor};
   border-radius: ${props => props.theme.borderRadius};
   cursor: pointer;
-  -webkit-box-shadow: ${props => props.theme.shdow};
-  box-shadow: ${props => props.theme.shdow};
   transition: all 0.2s ease-out;
   :hover {
     border: 1px solid ${props => props.theme.baseColor};
@@ -19,4 +17,4 @@ const SearchBtn = styled.button`
   }
 `;
 
-export default SearchBtn;
+export default SetupBtn;

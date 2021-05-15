@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { getMapData } from '../api';
 import GoogleMap from '../components/GoogleMap';
 import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Modal from '../components/Modal';
+import Setup from '../components/Setup';
+import { useCities, useLoading, useSetup } from '../contexts/LocationContext';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -17,11 +20,32 @@ const HomeContainer = styled.div`
 `;
 
 const Home = () => {
+  const { loading } = useLoading();
+  const { setup } = useSetup();
+  const { setCities } = useCities();
+
+  const init = async () => {
+    const cities = await getMapData();
+    setCities(cities);
+  };
+
+  useEffect(() => {
+    init();
+    return () => {};
+  }, []);
+
   return (
     <HomeContainer>
-      <Modal>
-        <Loader />
-      </Modal>
+      {loading ? (
+        <Modal>
+          <Loader />
+        </Modal>
+      ) : null}
+      {setup ? (
+        <Modal>
+          <Setup />
+        </Modal>
+      ) : null}
       <Header />
       <GoogleMap />
     </HomeContainer>

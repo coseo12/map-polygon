@@ -9,8 +9,19 @@ declare module 'styled-components' {
     thin: string;
     light: string;
     medium: string;
+    bold: string;
+    baseColor: string;
+    shdow: string;
+    h1: string;
+    h2: string;
+    h3: string;
   }
 }
+
+export type Cities = {
+  city: string;
+  locations: Geolocation[];
+};
 
 export type Geolocation = {
   city: string;
@@ -46,4 +57,9 @@ export type Geocoder = {
   geometry: any;
   place_id: string;
   types: string[];
+};
+
+export type Locations = {
+  polygonCoords: any;
+  geolocation: Geolocation;
 };
