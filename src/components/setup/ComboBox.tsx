@@ -34,6 +34,7 @@ const ListContainer = styled.ul`
   display: block;
   border: 1px solid ${props => props.theme.borderColor};
   border-top: 0;
+  z-index: 100;
 `;
 
 const List = styled.li`
@@ -61,6 +62,7 @@ type ComboBoxProps = {
   placeholder?: string;
   defaultItem?: string;
   fn(name: string): void;
+  all?: boolean;
 };
 
 const ComboBox: React.FC<ComboBoxProps> = ({
@@ -93,7 +95,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   };
 
   useEffect(() => {
-    if (defaultItem && !selected) {
+    if (defaultItem) {
       const str = items?.find(a => a === defaultItem);
       setSelected(str || '');
     } else {
@@ -104,7 +106,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
 
   return (
     <ComboBoxContainer onClick={onClose}>
-      {selected ? (
+      {selected !== '' ? (
         <SelectTitle>{selected}</SelectTitle>
       ) : (
         <Placeholder>{placeholder}</Placeholder>

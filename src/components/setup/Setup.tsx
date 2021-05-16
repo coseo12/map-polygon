@@ -1,34 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useSelectNames, useSetup } from '../../contexts/LocationContext';
 import { Cities } from '../../types';
+import SelectorBox from './SelectorBox';
+import SetupComboboxContainer from './SetupCombox';
+import SetupContainer from './SetupContainer';
+import CityName from './CityName';
+import Title from './Title';
+import SelectorBtnBox from './SelectorBtnBox';
+import SelectedBox from './Selectedbox';
 import SetupBtn from './SetupBtn';
-import SetupComboboxContainer from './SetupComboxContainer';
-
-const SetupContainer = styled.div`
-  width: 600px;
-  min-height: 700px;
-  background-color: ${props => props.theme.bgColor};
-  -webkit-box-shadow: ${props => props.theme.shdow};
-  box-shadow: ${props => props.theme.shdow};
-  z-index: 300;
-`;
-
-const Title = styled.div`
-  margin: 25px 15px 15px 15px;
-  font-size: ${props => props.theme.h2};
-  font-weight: ${props => props.theme.medium};
-`;
-
-const SubTitle = styled.div`
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding-left: 15px;
-  background-color: #eee;
-  color: ${props => props.theme.fontColor};
-  font-size: ${props => props.theme.h3};
-  font-weight: ${props => props.theme.light};
-`;
 
 const Divider = styled.div`
   width: 100%;
@@ -44,11 +25,26 @@ const SearchBox = styled.div`
   padding: 10px;
 `;
 
-const ButtonBoxContainer = styled.div`
+const CloseBtnContainer = styled.div`
+  position: relative;
+  bottom: 0;
+  margin: 20px 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  button {
+    background-color: ${props => props.theme.baseColor};
+    padding: 10px 40px;
+    border-radius: ${props => props.theme.borderRadius};
+    color: #fff;
+    font-weight: ${props => props.theme.medium};
+    :hover {
+      background-color: #fff;
+      color: ${props => props.theme.baseColor};
+    }
+  }
 `;
-
-const SelectorContainer = styled.div``;
 
 type SetupProps = {
   cities: Cities[];
@@ -56,6 +52,8 @@ type SetupProps = {
 const Setup: React.FC<SetupProps> = ({ cities }) => {
   const [citiessort, setCitiessort] = useState(false);
   const [countriesSort, setCountriesSort] = useState(false);
+  const { cityName, countryNames } = useSelectNames();
+  const { setSetup } = useSetup();
 
   const onClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
@@ -76,13 +74,14 @@ const Setup: React.FC<SetupProps> = ({ cities }) => {
           setCitiessort={setCitiessort}
           setCountriesSort={setCountriesSort}
         />
-        <ButtonBoxContainer>
-          <SetupBtn>전체선택</SetupBtn>
-          <SetupBtn>선택해제</SetupBtn>
-        </ButtonBoxContainer>
+        <SelectorBtnBox cities={cities} />
       </SearchBox>
-      <SubTitle>서울특별시</SubTitle>
-      <SelectorContainer>Selector</SelectorContainer>
+      <CityName>{cityName}</CityName>
+      <SelectorBox cities={cities} countryNames={countryNames} />
+      <SelectedBox cities={cities} countryNames={countryNames} />
+      <CloseBtnContainer>
+        <SetupBtn onClick={() => setSetup(false)}>지역 선택 완료</SetupBtn>
+      </CloseBtnContainer>
     </SetupContainer>
   );
 };

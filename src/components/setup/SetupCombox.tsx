@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ComboBox from '../shared/ComboBox';
+import ComboBox from './ComboBox';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Cities } from '../../types';
 import { getCityNames, getCountryNames } from '../../api';
+import { useSelectNames } from '../../contexts/LocationContext';
 
 const ComboBoxContainer = styled.div`
   display: flex;
@@ -32,11 +33,15 @@ const SetupComboboxContainer: React.FC<SetupComboboxProps> = ({
   setCitiessort,
   setCountriesSort,
 }) => {
-  const [cityNames, setCityNames] = useState<string[]>([]);
-  const [countryNames, setCountryNames] = useState<string[]>([]);
-  const [cityName, setCityName] = useState<string>('');
-  const [countryName, setCountryName] = useState<string>('');
   const [searchList, setSearchList] = useState<Cities>();
+  const {
+    setCityName,
+    cityNames,
+    setCityNames,
+    setCountryName,
+    countryNames,
+    setCountryNames,
+  } = useSelectNames();
 
   const onCitiessort = () => {
     setCitiessort(!citiessort);
@@ -79,15 +84,13 @@ const SetupComboboxContainer: React.FC<SetupComboboxProps> = ({
     onCountryNames(list);
   };
 
-  const init = async () => {
-    const items = await getCityNames();
-    await setCityNames(items);
-    await setCityName(items[0]);
+  const init = () => {
+    getCityNames().then(res => {
+      setCityNames(() => res);
+    });
+    setCityName(() => cities[0].city);
+    onCityName(cities[0].city);
   };
-
-  useEffect(() => {
-    setList(cityName);
-  }, [cities]);
 
   useEffect(() => {
     init();
@@ -100,7 +103,7 @@ const SetupComboboxContainer: React.FC<SetupComboboxProps> = ({
         items={cityNames}
         sort={citiessort}
         onSort={onCitiessort}
-        defaultItem={cityNames[0]}
+        defaultItem={cities[0].city}
         placeholder={'시 선택'}
         fn={onCityName}
       />
@@ -113,6 +116,7 @@ const SetupComboboxContainer: React.FC<SetupComboboxProps> = ({
         placeholder={'구 선택'}
         onSort={onCountriesSort}
         fn={onCountryName}
+        all={true}
       />
     </ComboBoxContainer>
   );

@@ -8,7 +8,7 @@ const LoaderContainer = styled.div`
     width: 10px;
     height: 100px;
     margin: 0 10px;
-    background: #0077ff;
+    background: ${props => props.theme.baseColor};
     animation: animate 1.4s linear infinite;
   }
   span:nth-child(1) {
