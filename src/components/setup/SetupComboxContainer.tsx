@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ComboBox from './ComboBox';
+import ComboBox from '../shared/ComboBox';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Cities } from '../types';
-import { getCityNames, getCountryNames } from '../api';
+import { Cities } from '../../types';
+import { getCityNames, getCountryNames } from '../../api';
 
 const ComboBoxContainer = styled.div`
   display: flex;

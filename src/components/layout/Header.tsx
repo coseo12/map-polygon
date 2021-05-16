@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSetup } from '../contexts/LocationContext';
-import SearchBtn from './SearchBtn';
-import SearchBox from './SearchInput';
+import { useSetup } from '../../contexts/LocationContext';
+import SearchBtn from '../shared/SearchBtn';
+import SearchBox from '../shared/SearchBox';
 
 const HeaderContainer = styled.header`
   position: sticky;

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getCountries, getMapData } from '../api';
+import { getCountries } from '../api';
 import { Cities, Coords, Geocoder, Geolocation, Locations } from '../types';
 
 type address = {
   city: string;
   country?: string;
+  full?: string;
 };
 
 type Context = {
@@ -112,7 +113,7 @@ const LocationContextProvider = ({
         if (status === 'OK') {
           const addr = results[1].formatted_address;
           const [_, city, country] = addr.split(' ');
-          setAddress({ city, country });
+          setAddress({ city, country, full: addr });
           const items = cities.filter(a => a.city === city);
           if (items.length > 0) {
             const countries = await getCountries(items[0].locations, country);
@@ -126,17 +127,6 @@ const LocationContextProvider = ({
       }
     );
   };
-
-  // const getCoords = (address: string) => {
-  //   const geocoder = new maps.Geocoder();
-  //   geocoder.geocode({ address }, (results: Geocoder[], status: string) => {
-  //     if (status === 'OK') {
-  //       setAddress(results[1].formatted_address);
-  //     } else {
-  //       alert('정확한 주소를 입력해주세요');
-  //     }
-  //   });
-  // };
 
   const searchTerm = (term: address) => {
     setAddress(term);

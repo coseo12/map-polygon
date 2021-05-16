@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Cities } from '../types';
+import { Cities } from '../../types';
 import SetupBtn from './SetupBtn';
 import SetupComboboxContainer from './SetupComboxContainer';
 
 const SetupContainer = styled.div`
-  width: 35vw;
-  height: 70vh;
+  width: 600px;
+  min-height: 700px;
   background-color: ${props => props.theme.bgColor};
   -webkit-box-shadow: ${props => props.theme.shdow};
   box-shadow: ${props => props.theme.shdow};

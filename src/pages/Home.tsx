@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { getMapData } from '../api';
-import GoogleMap from '../components/GoogleMap';
-import Header from '../components/Header';
-import Loader from '../components/Loader';
-import Modal from '../components/Modal';
-import Setup from '../components/Setup';
+import GoogleMap from '../components/home/GoogleMap';
+import Header from '../components/layout/Header';
+import Loader from '../components/shared/Loader';
+import Modal from '../components/shared/Modal';
+import Setup from '../components/setup/Setup';
 import { useCities, useLoading, useSetup } from '../contexts/LocationContext';
 
 const HomeContainer = styled.div`

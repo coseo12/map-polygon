@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { useSetup } from '../contexts/LocationContext';
+import { useSetup } from '../../contexts/LocationContext';
 
 const ModalContainer = styled.div`
   display: flex;

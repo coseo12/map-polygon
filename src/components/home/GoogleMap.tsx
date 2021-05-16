@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
 import GoogleMapReact from 'google-map-react';
-import { Coords, Geocoder, GoogleMapProps } from '../types';
 import {
   useGeocode,
   useLocations,
   useMap,
   useMaps,
   usePolygon,
-} from '../contexts/LocationContext';
+} from '../../contexts/LocationContext';
 
 const KEY: string = 'AIzaSyBM0k_VvlAs52qP7mRiTFq86EX1lhDLJc4';
 

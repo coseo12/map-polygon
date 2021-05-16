@@ -2,7 +2,7 @@ import React from 'react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { useAddress } from '../contexts/LocationContext';
+import { useAddress } from '../../contexts/LocationContext';
 
 const SearchContainer = styled.div`
   position: relative;
@@ -29,7 +29,7 @@ const SearchBox = () => {
   const { address } = useAddress();
   return (
     <SearchContainer>
-      <SearchInput readOnly value={address} />
+      <SearchInput readOnly={true} value={address.full} />
       <SearchIcon>
         <FontAwesomeIcon icon={faSearch} />
       </SearchIcon>
