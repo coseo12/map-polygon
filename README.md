@@ -12,12 +12,6 @@
 - react-helmet-async
 - Fontawesome
 
-## 개발 서버 구동 명령어
-
-```
-npm run dev
-```
-
 ## TODO
 
 - [x] 초기 설정
