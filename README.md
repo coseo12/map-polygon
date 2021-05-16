@@ -1,4 +1,23 @@
-# Map Polygon line path
+# 구글맵 폴리곤
+
+구글맵 폴리곤 이벤트 구현
+
+## 사용 라이브러리
+
+- react (Template: Typescript)
+- vite
+- google-map-react
+- styled-compoents
+- styled-reset
+- react-helmet-async
+
+## 개발 서버 구동 명령어
+
+```
+npm run dev
+```
+
+## TODO
 
 - [x] 초기 설정
 - [x] Json data paser api 구성
@@ -6,5 +25,5 @@
 - [x] 기본 화면 구성
 - [x] Loader
 - [x] 맵 폴리곤 이벤트 구현
-- [ ] 지역 설정 구성
-- [ ] 기타
+- [x] 지역 설정 구성
+- [x] 기타
