@@ -33,28 +33,17 @@ const Selected: React.FC<SelectedProps> = ({ cities, id, text }) => {
   const { removeLocation } = useLocations();
   const { cityName } = useSelectNames();
 
-  const onClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!(event.target instanceof SVGElement)) {
-      return;
-    }
-    const text = event.target.dataset.text;
-    console.log(text);
-    if (!text) {
-      return;
-    }
+  const onClick = () => {
     removeLocation(cityName, text);
   };
+
   return (
     <SelectedContainer>
       {text ? (
         <>
           <div>{text}</div>
           <DeleteIcon onClick={onClick} data-text={text}>
-            <FontAwesomeIcon
-              icon={faTimes}
-              data-text={text}
-              onClick={e => {}}
-            />
+            <FontAwesomeIcon icon={faTimes} onClick={e => {}} />
           </DeleteIcon>
         </>
       ) : null}
