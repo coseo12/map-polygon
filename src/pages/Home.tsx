@@ -22,11 +22,11 @@ const HomeContainer = styled.div`
 const Home = () => {
   const { loading } = useLoading();
   const { setup } = useSetup();
-  const { setCities } = useCities();
+  const { cities, setCities } = useCities();
 
   const init = async () => {
-    const cities = await getMapData();
-    setCities(cities);
+    const items = await getMapData();
+    setCities(items);
   };
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Home = () => {
       ) : null}
       {setup ? (
         <Modal>
-          <Setup />
+          <Setup cities={cities} />
         </Modal>
       ) : null}
       <Header />
