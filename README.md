@@ -10,6 +10,7 @@
 - styled-compoents
 - styled-reset
 - react-helmet-async
+- Fontawesome
 
 ## 개발 서버 구동 명령어
 
